@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om Hire</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    .header {
+      background: linear-gradient(90deg, #1e1e1e, #333);
+      color: white;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #050505;
+    }
+
+    .hero {
+      background: url('assets/images/hero.png') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      animation: typing 3s steps(20, end), blink 0.5s step-end infinite alternate;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 4px solid #fff;
+    }
+
+    .hero .btn {
+      background: #0f0f0f;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 25px;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      box-sizing: border-box;
+      box-shadow: #71c6ff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: #080807;
+      border-color: #71c6ff;
+      box-shadow: #71c6ff;
+      transform: scale(1.1);
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #fff; }
+    }
+
+    .about, .projects, .contact {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      align-content: center;
+      box-shadow: #71c6ff;
+      text-align: center;
+      text-overflow: clip;
+      margin: auto;
+    }
+
+    .about h2, .projects h2, .contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      box-shadow: #71c6ff;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: #71c6ff;
+    }
+
+    .projects .project-grid  {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      flex-shrink: unset;
+      text-size-adjust: auto;
+      
+
+    }
+    .filter-buttons {
+      font-size: 24px;
+      size: 30px;;
+      padding: 11px 30px;
+      border: 1px solid rgba(253, 254, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(5, 3, 3, 0.1);
+      backdrop-filter: blur(10px);
+      color: rgb(235, 223, 223);
+      cursor:grabbing;
+      transition: all 0.3s ease;
+      box-shadow: #71c6ff;
+      
+    }
+    .filter-buttons:hover{
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(91, 225, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .project-card {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(119, 230, 255, 0.1);
+      transition: transform 0.3s;
+      shape-image-threshold: initial;
+    }
+
+    .project-card img {
+      width: 100%;
+      transition: transform 0.5s;
+      overflow: visible;
+      shape-rendering: geometricPrecision;
+      box-shadow: #71c6ff;
+      size: 10cap;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.1);
+    }
+    .certificate-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(92, 180, 247, 0.1);
+      box-shadow: 0 0 20px rgba(90, 196, 239, 0.5); /* Added glow */
+    }
+    .certificate {
+      width: 200px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(90, 223, 247, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Added glow */
+    }
+    .certificate:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .certificate img {
+      width: 100%;
+      height: auto;
+      box-shadow: #71c6ff;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #1e1e1e;
+      color: white;
+      font-size: 0.9rem;
+      box-shadow: #71c6ff;
+    }
+
+    [data-aos] {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    [data-aos].aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Om Hire</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Om Hire's Portfolio</h1>
+    <a href="#projects" class="btn">Moralize it</a>
+  </section>
+
+  <section id="about" class="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p id="i">Hi, I’m Om Hire, a Machine Learning and Deep Learning enthusiast passionate about crafting intelligent solutions. I am an AI student and all I need is AI and tech. I am constantly exploring new technologies and methodologies to stay at the forefront of the AI field. My goal is to leverage AI to solve real-world problems and make a positive impact on society.</p>
+    <p>In addition to my technical skills, I am also a strong advocate for ethical AI practices. I believe that AI should be developed and deployed responsibly, with consideration for its societal and environmental impacts. I am committed to promoting transparency, fairness, and accountability in AI systems.</p>
+    <p>Outside of my professional interests, I enjoy reading about the latest advancements in AI, participating in hackathons, and contributing to open-source projects. I also love connecting with like-minded individuals and engaging in discussions about the future of technology.</p>
+
+  </section>
+  <section id="certificates" class="certificates">
+    <div class="container">
+      <h2>Certificates and Milestones</h2>
+      <div class="certificate-box">
+        <div class="certificate">
+          <img src="assets/images/1.png" alt="Badge-1">
+          <p>Cloud Foundation</p>
+        </div>
+        <div class="certificate">
+          <img src="assets/images/2.png" alt="Badge-2">
+          <p>Machine Learning Foundation</p>
+        </div>
+        <div class="certificate">
+          <img src="assets/images/3.png" alt="Badge-3">
+          <p>Cloud Computing 101</p>
+        </div>
+        <div class="certificate">
+          <img src="assets/images/4.png" alt="Badge-4">
+          <p>Getting Storage</p>
+        </div>
+        <div class="certificate">
+          <img src="assets/images/5.png" alt="Badge-5">
+          <p></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects" data-aos="fade-up">
+    <div class="filter-buttons">
+    <h2>Projects</h2>
+
+      <button data-filter="all">All</button>
+      <button data-filter="ML">Machine Learning</button>
+      <button data-filter="DL">Deep Learning</button>
+    </div><div class="project-grid">
+      <div class="project-card" data-category="all" style="display: grid;">
+       <a href="https://deploy.ultroid.tech/"> <img src="assets/images/bot.png" alt="Bot Project"></a>
+      </div>
+      <div class="project-card" data-category="ML" style="display: grid;">
+        <img src="https://th.bing.com/th/id/OIP.Lrm1VkIDRdtdIbn6Jio8dAHaE8?rs=1&amp;pid=ImgDetMain&quot;" alt="ML Project">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <div class="social-links">
+      <a href="https://instagram.com/_om_07_____._" target="_blank"><img src="assets/images/instagram.png" height="50px" width="50px"></a>
+      <a href="https://t.me/OM07H" target="_blank"><img src="assets/images/telegram.png" height="50px" width="50px"></a>
+      <a href="https://github.com/om657" target="_blank"><img src="assets/images/github.png" height="50px" width="50px"></a>
+      <a href="mailto:hireom07@gmail.com" target="_blank"><img src="assets/images/email.png" height="50px" width="50px"></a>
+      <a href="https://www.linkedin.com/in/om07h" target="_blank"><img src="assets/images/linkdln.png" height="50px" width="50px"></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Om Hire. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+  <script>
+    // JavaScript from script.js
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    const backToTop = document.createElement('button');
+    backToTop.textContent = '↑';
+    backToTop.className = 'back-to-top';
+    document.body.appendChild(backToTop);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const projectCards = document.querySelectorAll('.project-card');
+    document.querySelectorAll('.filter-buttons button').forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    const contactForm = document.querySelector('form');
+    contactForm.addEventListener('submit', (e) => {
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        e.preventDefault();
+        alert('Please enter a valid email address.');
+      }
+    });
+  </script>
+</body>
+</html>
