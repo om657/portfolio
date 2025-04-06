@@ -1,0 +1,60 @@
+:root {
+  --glow-color: #6bffff;
+  --text-glow: 0 0 10px #6bffff, 0 0 20px #6bffff, 0 0 30px #6bffff;
+}
+
+/* Common Styles */
+.project-card, .certificate, .achievement-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--glow-color);
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--glow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--glow-color);
+  text-shadow: var(--text-glow);
+}
+
+/* Hover Effects */
+.project-card:hover, .certificate:hover, .achievement-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--glow-color), 0 0 40px var(--glow-color);
+}
+
+/* Containers */
+.certificates-container, .achievements-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.project-card img,
+.certificate img,
+.achievement-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--glow-color);
+}
+
+/* Responsive sizing */
+.project-card, .certificate, .achievement-card {
+  width: 260px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Light Mode Support */
+@media (prefers-color-scheme: light) {
+  :root {
+    --glow-color: #00aaff;
+    --text-glow: 0 0 6px #00aaff, 0 0 12px #00aaff;
+  }
+  
+  .project-card, .certificate, .achievement-card {
+    background: #f8f9fa;
+    color: #0077cc;
+    border-color: #00aaff;
+    text-shadow: none;
+    box-shadow: 0 0 8px #00aaff;
+  }
+}

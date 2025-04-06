@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Om Hire | AI Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Lato&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #002147;
+      --accent: #6bffff;
+      --text-light: #f5f5f5;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bg-light);
+      color: #222;
+      scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, var(--primary), #4a5a8a);
+      color: white;
+    }
+
+    h1#typed {
+      font-size: 3rem;
+    }
+    .glow-header {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    /* Glowing main title */
+    .glow-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #6bffff;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 2px;
+      animation: pulseGlow 2.5s infinite ease-in-out;
+      text-shadow:
+        0 0 5px #6bffff,
+        0 0 15px #6bffff,
+        0 0 30px #6bffff,
+        0 0 60px #4befff,
+        0 0 90px #2bfcff;
+      transform: perspective(1000px) rotateX(5deg);
+    }
+    
+    /* Subtitle glowing effect */
+    .glow-subtitle {
+      font-size: 1.3rem;
+      margin-top: 15px;
+      color: #dff;
+      font-family: 'Lato', sans-serif;
+      text-shadow:
+        0 0 5px #6bffff,
+        0 0 10px #6bffff,
+        0 0 20px #4befff,
+        0 0 30px #2bfcff;
+      animation: floatGlow 3s ease-in-out infinite;
+    }
+    
+    /* Main glow animation */
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #6bffff,
+          0 0 15px #6bffff,
+          0 0 30px #6bffff,
+          0 0 60px #4befff,
+          0 0 90px #2bfcff;
+        transform: perspective(1000px) rotateX(5deg) scale(1);
+      }
+      50% {
+        text-shadow:
+          0 0 10px #6bffff,
+          0 0 30px #6bffff,
+          0 0 50px #4befff,
+          0 0 80px #2bfcff,
+          0 0 120px #2bfcff;
+        transform: perspective(1000px) rotateX(8deg) scale(1.05);
+      }
+    }
+    
+    /* Subtitle floating glow */
+    @keyframes floatGlow {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+    
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    :root {
+      --glow-color: #6bffff;
+      --text-glow: 0 0 10px #6bffff, 0 0 20px #6bffff, 0 0 30px #6bffff;
+    }
+    
+    /* Common Styles */
+    .project-card, .certificate, .achievement-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--glow-color);
+      border-radius: 12px;
+      box-shadow: 0 0 15px var(--glow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--glow-color);
+      text-shadow: var(--text-glow);
+    }
+    
+    /* Hover Effects */
+    .project-card:hover, .certificate:hover, .achievement-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--glow-color), 0 0 40px var(--glow-color);
+    }
+    
+    /* Containers */
+    .certificates-container, .achievements-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    
+    .project-card img,
+    .certificate img,
+    .achievement-card img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 12px var(--glow-color);
+    }
+    
+    /* Responsive sizing */
+    .project-card, .certificate, .achievement-card {
+      width: 260px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Light Mode Support */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --glow-color: #00aaff;
+        --text-glow: 0 0 6px #00aaff, 0 0 12px #00aaff;
+      }
+      
+      .project-card, .certificate, .achievement-card {
+        background: #f8f9fa;
+        color: #0077cc;
+        border-color: #00aaff;
+        text-shadow: none;
+        box-shadow: 0 0 8px #00aaff;
+      }
+    }
+    
+
+    .project-card, .certificate, .achievement {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card:hover, .certificate:hover, .achievement:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    .projects-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: nowrap; /* Prevent wrapping on large screens */
+      overflow-x: auto;   /* Allow scroll if too wide */
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .project-card {
+      min-width: 300px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .project-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .project-card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.3rem;
+    }
+    
+    .project-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    
+    .project-card a {
+      text-decoration: none;
+      color: #3e64ff;
+      font-weight: bold;
+    }
+    
+    .project-card a:hover {
+      color: #14bcd5;
+    }
+    
+    /* Dark mode compatibility */
+    body.dark-mode .project-card {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+    
+    body.dark-mode .project-card p {
+      color: #ccc;
+    }
+    .certifications-section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    
+    .certificates-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+    
+    .certificate {
+      background-color: var(--card-bg, #ffffff);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 250px;
+      transition: transform 0.3s ease;
+    }
+    
+    .certificate img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    .certificate p, .certificate h3 {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-color, #333);
+    }
+    
+    .certificate:hover {
+      transform: translateY(-5px);
+    }
+    .achievements-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .achievements-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .achievement-card {
+      background-color: var(--card-bg, #ffffff);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 280px;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    
+    .achievement-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .achievement-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--text-color, #222);
+    }
+    
+    .achievement-card p {
+      font-size: 14px;
+      color: var(--text-color, #555);
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      font-size: 1.8rem;
+      color: inherit;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+      color: var(--accent);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      background: var(--primary);
+      color: white;
+    }
+    .glow-footer {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      padding: 25px 15px;
+      text-align: center;
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      letter-spacing: 1px;
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Glowing Text */
+    .glow-footer span,
+    .glow-footer {
+      text-shadow: 0 0 5px #f78ca0,
+                   0 0 10px #f78ca0,
+                   0 0 20px #f78ca0,
+                   0 0 40px #f78ca0;
+    }
+    
+    /* Glowing Heart */
+    .glow-heart {
+      font-size: 20px;
+      display: inline-block;
+      color: #ff1c58;
+      animation: pulseHeart 1.5s infinite ease-in-out;
+      text-shadow:
+        0 0 5px #ff1c58,
+        0 0 10px #ff1c58,
+        0 0 20px #ff1c58,
+        0 0 30px #ff4c6d,
+        0 0 50px #ff6d80,
+        0 0 70px #ff8c94;
+      transform-style: preserve-3d;
+    }
+    
+    @keyframes pulseHeart {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+        text-shadow:
+          0 0 5px #ff1c58,
+          0 0 10px #ff1c58,
+          0 0 20px #ff1c58,
+          0 0 30px #ff4c6d,
+          0 0 50px #ff6d80,
+          0 0 70px #ff8c94;
+      }
+      50% {
+        transform: scale(1.2) rotate(5deg);
+        text-shadow:
+          0 0 10px #ff1c58,
+          0 0 20px #ff2d60,
+          0 0 30px #ff4c6d,
+          0 0 60px #ff6d80,
+          0 0 90px #ff8c94;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  
+
+
+  <header class="glow-header">
+    <h1 id="typed" class="glow-title">Om Hire</h1>
+    <p class="glow-subtitle">Student of Artificial Intelligence and Machine Learning</p>
+  </header>
+  
+
+  <section data-aos="fade-up">
+    <h2>Projects</h2>
+
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="assets/images/spam.jpg" alt="College Chatbot" class="project-img">
+      <h3>Email Spam</h3>
+      <p>AI-based Email Spam Filtering</p>
+      <a href="https://github.com/om657/Email-spam" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="assets/images/grape.jpg" alt="Tomato Disease Detector" class="project-img">
+      <h3>Grape Leaf Disease Detector</h3>
+      <p>CNN & TensorFlow Lite-powered mobile-ready classifier for plant disease detection.</p>
+      <a href="https://github.com/om657/Grapes-Leaf-Disease-Detection" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="assets/images/iris.jpg" alt="Energy Monitoring" class="project-img">
+      <h3>Iris-flower</h3>
+      <p>Machine Learning Project</p>
+      <a href="https://github.com/om657/Iris-flower" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="assets/images/bot.png" alt="UserBot" class="project-img">
+      <h3>Forked Userbot</h3>
+      <p>An Assistant User Bot to make efficient use of Developing Tools</p>
+      <a href="https://github.com/om657/Ultroid" target="_blank">View on GitHub</a>
+    </div>
+  </section>
+
+  <section class="certifications-section" data-aos="fade-up">
+    <h2>Certifications</h2>
+    <div class="certificates-container">
+      
+      <!-- Certificate 1 -->
+      <div class="certificate" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/1.png" alt="AWS Cloud Foundations" />
+        <p>Cloud Foundations - AWS Academy</p>
+      </div>
+  
+      <!-- Certificate 2 -->
+      <div class="certificate" data-aos="fade-up" data-aos-delay="150">
+        <img src="assets/images/2.png" alt="AWS Machine Learning" />
+        <p>Machine Learning Foundations - AWS Educate</p>
+      </div>
+  
+      <!-- Certificate 3 -->
+      <div class="certificate" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/images/3.png" alt="Cloud 101" />
+        <p>Cloud Computing 101 - AWS Educate</p>
+      </div>
+  
+      <!-- Certificate 4 -->
+      <div class="certificate" data-aos="fade-up" data-aos-delay="250">
+        <img src="assets/images/4.png" alt="Getting Started with Storage" />
+        <p>Getting Started with Storage - AWS Educate</p>
+      </div>
+  
+      <!-- Certificate 5 -->
+      <div class="certificate" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/images/5.png" alt="AWS Academy Cloud Foundations Certificate" />
+        <p>AWS Academy Cloud Foundations - Om Hire</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  <section class="achievements-section" data-aos="fade-up">
+    <h2>Achievements</h2>
+    <div class="achievements-container">
+  
+      <!-- Trophy Image -->
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/sandip.jpg" alt="Sandip Foundation Trophy" />
+        <p><strong>Winner 1st Prize - Drishti National Level Event</strong><br>Sandip Foundation's National Level Project Competition Fest</p>
+      </div>
+
+      <div class="achievement-card" data-aos="fade-up" data-aos-delay="150">
+        <img src="assets/images/sanjivani.jpg" alt="Sandip Foundation Trophy" />
+        <p><strong>Winner 1st Prize - Tech-Mantra Event</strong><br>Sanjivani Polytechnic's National Level Project Competition</p>
+      </div>
+  
+    </div>
+  </section>
+  
+
+  <section data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <div class="social-links">
+      <a href="https://github.com/om657" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/om07h" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/om657" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:hireom07@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://instagram.com/_om_07_._" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <footer class="glow-footer">
+    Made with <span class="glow-heart">❤️</span> by Om Hire | © 2025 All Rights Reserved
+  </footer>
+  
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    AOS.init();
+
+    new Typed("#typed", {
+      strings: ["Hi, I'm Om.", "AI Enthusiast.", "Innovator. Dreamer. Builder."],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+    }
+
+    // Apply saved mode
+    if (localStorage.getItem("dark-mode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+  </script>
+</body>
+</html>
